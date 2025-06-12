@@ -2,16 +2,16 @@
 	"name": "vscode-mcp-feedback-extension",
 	"displayName": "mcp-feedback",
 	"description": "A VSCode extension that provides MCP HTTP server with user feedback interface.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"icon": "assets/icons/icon.png",
 	"engines": {
 		"vscode": "^1.84.0"
 	},
 	"author": {
-		"name": "Demo Author"
+		"name": "fffattiger"
 	},
 	"license": "Apache-2.0",
-	"publisher": "demo-publisher",
+	"publisher": "fffattiger",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/demo/vscode-sidebar-demo"
