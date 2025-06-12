@@ -1,0 +1,132 @@
+{
+	"name": "vscode-mcp-feedback-extension",
+	"displayName": "mcp-feedback",
+	"description": "A VSCode extension that provides MCP HTTP server with user feedback interface.",
+	"version": "1.0.0",
+	"icon": "assets/icons/icon.png",
+	"engines": {
+		"vscode": "^1.84.0"
+	},
+	"author": {
+		"name": "Demo Author"
+	},
+	"license": "Apache-2.0",
+	"publisher": "demo-publisher",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/demo/vscode-sidebar-demo"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"vscode",
+		"mcp",
+		"model-context-protocol",
+		"feedback",
+		"ai-assistant",
+		"webview",
+		"extension"
+	],
+	"activationEvents": [],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "mcp-feedback-ActivityBar",
+					"title": "MCP Feedback",
+					"icon": "assets/icons/icon.svg"
+				}
+			]
+		},
+		"views": {
+			"mcp-feedback-ActivityBar": [
+				{
+					"type": "webview",
+					"id": "sidebar-demo.SidebarProvider",
+					"name": ""
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "sidebarDemo.openInNewTab",
+				"title": "Open In New Tab",
+				"category": "MCP Feedback"
+			}
+		],
+		"menus": {},
+		"configuration": {
+			"title": "MCP Feedback Server",
+			"properties": {
+				"sidebarDemo.message": {
+					"type": "string",
+					"default": "MCP反馈服务器已启动",
+					"description": "Message to display in the MCP feedback interface."
+				},
+				"mcpFeedbackServer.enabledTools": {
+					"type": "object",
+					"default": {
+						"request-user-feedback": true,
+						"get-user-confirmation": true
+					},
+					"description": "Configure which MCP tools are enabled.",
+					"properties": {
+						"request-user-feedback": {
+							"type": "boolean",
+							"description": "Enable the user feedback tool"
+						},
+						"get-user-confirmation": {
+							"type": "boolean",
+							"description": "Enable the user confirmation tool"
+						}
+					}
+				},
+				"mcpFeedbackServer.timeout": {
+					"type": "number",
+					"default": 30000,
+					"minimum": 1000,
+					"maximum": 300000,
+					"description": "Tool call timeout in milliseconds (1-300 seconds)."
+				},
+				"mcpFeedbackServer.port": {
+					"type": "number",
+					"default": 7423,
+					"minimum": 1024,
+					"maximum": 65535,
+					"description": "Port number for the MCP HTTP server."
+				},
+				"mcpFeedbackServer.autoRestart": {
+					"type": "boolean",
+					"default": false,
+					"description": "Automatically restart the server when configuration changes."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "node esbuild.js",
+		"package": "npm run build:webview && node esbuild.js --production",
+		"install:all": "npm install && cd webview-ui && npm install",
+		"build:webview": "cd webview-ui && npm run build",
+		"package:vsix": "npm run package && vsce package"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.3",
+		"@types/node": "20.x",
+		"@types/vscode": "^1.84.0",
+		"@vscode/vsce": "^3.5.0",
+		"esbuild": "^0.25.0",
+		"typescript": "^5.4.5"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.12.1",
+		"@vscode/codicons": "^0.0.36",
+		"cors": "^2.8.5",
+		"express": "^5.1.0",
+		"zod": "^3.25.63"
+	}
+}

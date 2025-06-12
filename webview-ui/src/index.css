@@ -1,0 +1,64 @@
+html {
+	height: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	margin: 0;
+	line-height: 1.4;
+	font-family: var(--vscode-font-family);
+	font-size: var(--vscode-font-size);
+	color: var(--vscode-foreground);
+	background-color: var(--vscode-editor-background);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+button {
+	font-family: inherit;
+}
+
+button:hover:not(:disabled) {
+	opacity: 0.9;
+}
+
+button:active:not(:disabled) {
+	opacity: 0.8;
+}
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--vscode-scrollbarSlider-background);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--vscode-scrollbarSlider-hoverBackground);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--vscode-scrollbarSlider-activeBackground);
+}
+
+/* 改进输入框焦点样式 */
+textarea:focus,
+input:focus {
+	outline: none !important;
+	border-color: var(--vscode-focusBorder) !important;
+	box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2) !important;
+}
+
+/* 平滑过渡动画 */
+* {
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+
